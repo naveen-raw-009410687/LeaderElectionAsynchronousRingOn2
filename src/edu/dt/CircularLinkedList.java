@@ -2,41 +2,41 @@ package edu.dt;
 
 public class CircularLinkedList {
 public int size =0;
-public Node1 head=null;
-public Node1 tail=null;
-//add a new Node1 at the start of the linked list
-public void addNode1AtStart(int data){
-System.out.println("Adding Node1 " + data + " at start");
-Node1 n = new Node1(data);
+public Processor head=null;
+public Processor tail=null;
+//add a new Processor at the start of the linked list
+public void addProcessorAtStart(int data){
+System.out.println("Adding Processor " + data + " at start");
+Processor n = new Processor(data);
 if(size==0){
             head = n;
             tail = n;
             n.next = head;
         }else{
-Node1 temp = head;
+Processor temp = head;
             n.next = temp;
             head = n;
             tail.next = head;
         }
         size++;
     }
-public void addNode1AtEnd(int data){
+public void addProcessorAtEnd(int data){
 if(size==0){
-            addNode1AtStart(data);
+            addProcessorAtStart(data);
         }else{
-Node1 n = new Node1(data);
+Processor n = new Processor(data);
             tail.next =n;
             tail=n;
             tail.next = head;
             size++;
         }
-System.out.println("\nNode1 " + data + " is added at the end of the list");
+System.out.println("\nProcessor " + data + " is added at the end of the list");
     }
-public void deleteNode1FromStart(){
+public void deleteProcessorFromStart(){
 if(size==0){
 System.out.println("\nList is Empty");
         }else{
-System.out.println("\ndeleting Node1 " + head.data + " from start");
+System.out.println("\ndeleting Processor " + head.data + " from start");
             head = head.next;
             tail.next=head;
             size--;
@@ -46,7 +46,7 @@ public int elementAt(int index){
 if(index>size){
 return -1;
         }
-Node1 n = head;
+Processor n = head;
 while(index-1!=0){
             n=n.next;
             index--;
@@ -56,7 +56,7 @@ return n.data;
 //print the linked list
 public void print(){
 System.out.print("Circular Linked List:");
-Node1 temp = head;
+Processor temp = head;
 if(size<=0){
 System.out.print("List is empty");
         }else{
@@ -74,24 +74,19 @@ return size;
     }
 public static void main(String[] args) {
 CircularLinkedList c = new CircularLinkedList();
-        c.addNode1AtStart(3);
-        c.addNode1AtStart(2);
-        c.addNode1AtStart(1);
+        c.addProcessorAtStart(3);
+        c.addProcessorAtStart(2);
+        c.addProcessorAtStart(1);
         c.print();
-        System.out.println(c.head.next.next.next.data); 
+       // System.out.println(c.head.next.next.next.data); 
         
-        c.deleteNode1FromStart();
+        c.deleteProcessorFromStart();
         c.print();
-        c.addNode1AtEnd(4);
+        c.addProcessorAtEnd(4);
         c.print();
 System.out.println("Size of linked list: "+ c.getSize());
 System.out.println("Element at 2nd position: "+ c.elementAt(2));
     }
 }
-class Node1{
-int data;
-Node1 next;
-public Node1(int data){
-this.data = data;
-    }
-}
+
+
